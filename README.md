@@ -68,7 +68,6 @@ Go to the One Chat dashboard, and navigate to the [One Chat - Nodes](https://app
 
 ### 5. Connecting the domain to the webapps
 
-
 Go to cloudflare, and navigate to your domains DNS settings. We now want to point your domain or subdomain to our cloudflare pages. 
 
 **To point a domain;**
@@ -76,7 +75,9 @@ Go to cloudflare, and navigate to your domains DNS settings. We now want to poin
 
 **To point a subdomain;**
 `type=CNAME name=subdomain target=webapp-one-chat-co.pages.dev proxy_status=true`
-``
+
+![image](https://github.com/user-attachments/assets/d0465d41-dff3-4b4f-815b-7cd0b3cd97ef)
+
 ### 6. That's it!
 
 It's important to note that sometimes it can take some time for your domain to actually work with webapps. If it takes more then like 30 minutes, just shoot me a message and ill refresh it on my side.
