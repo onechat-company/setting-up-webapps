@@ -1,30 +1,31 @@
 # Setting up your own custom webapp
 
-The following will be 2 different guides to creating and setting up webapps. The quick steps are for people who are experienced with networking and/or cloudflare. 
+Hello and welcome to the webapp tutorial for One Chat. This is version 2 of the tutorial and new sections have been added for adding different authentication methods.
 
-The in-depth steps are for those that are not familiar with networking, cloudflare or how any of that stuff works. 
+There will be a quick guide for those they are a bit more technologically inclined, and a full written tutorial for those that need to be walked through. 
 
 ## Quick Steps
-- Register a domain for your business
-- Create a Cloudflare account
-- Add your domain to Cloudflare
-- On the one chat dashboard, update your node's domain to what you'd like it to be;
+- Register a domain for your business.
+- Create a Cloudflare account.
+- Add your domain to Cloudflare and update your domain so that it points to Cloudflare.
+- On the One Chat dashboard, update your node's domain to what you'd like; 
 	- (e.g. example.com or subdomain.example.com)
 - On Cloudflare, add a new DNS query for the webapps
-	- For a domain `type=CNAME name=@ target=webapp-one-chat-co.pages.dev proxy_status=true`
-	- For a subdomain `type=CNAME name=subdomain target=webapp-one-chat-co.pages.dev proxy_status=true`
-- On telegram, update your bot to use the domain/subdomain you created. You do that by speaking to `@BotFather`.
+	- For a domain; `type=CNAME name=@ target=webapp-one-chat-co.pages.dev proxy_status=true`
+	- For a subdomain; `type=CNAME name=subdomain target=webapp-one-chat-co.pages.dev proxy_status=true`
+- On Telegram, update your bot to use the domain/subdomain you created. You can do that by speaking to `@BotFather`.
+	- Make sure you update the domain and don't add a webhook. Adding a webhook will break bot functionality.
 - Congrats you're done!
 
 **Some things to note;**
-- If you'd like to have your own business landing page, I highly recommend that you use a subdomain for the webapps.
-- If you'd like a landing page made, I can do it as freelance for somewhere in the 1-10k range (depending on what you need, complexity ...etc)
+- If you want to choose what authentication methods you allow on the webapps, you can modify this by editing your node on the One Chat dashboard.
+	- To enable discord as an auth method, make sure you add the `client_secret` for your bot, and add the following redirect to the oauth2 page; `https://subdomain.example.com/node/auth/callback`. Obviously make sure you use the correct subdomain or domain.
+- If you'd like to have your own business landing page, I highly recommend using the subdomain method and just directing your users to use the webapps. 
+- If you'd like a landing page made, I can make them for you. My pricing is within the 1-10K range depending on what your needs are.
 
 ## In-depth Steps
 
-Glad to see you're interesting in using the webapps for your business. To be honest, this system is super badass and will only help you maintain and bring new customers over. Allowing people who refuse to use platforms like telegram use the website to message your workers. 
-
-Currently though, only signing in with telegram is supported. In my next major update I will be adding discord, and a normal email/password sign in. All your customers currently use telegram, so it made sense to roll it out with telegram as the core functionality. 
+I am very glad to see that you have interest in the webapps. Over the course of about a month I made my fully functional messaging/ticket app for you guys, of which I have been slowly updating and improving. Honestly, webapps are quite badass and will only help you maintain and bring new customers over to your business. Not all potential customers will want to use telegram or some social messaging app, having your own domain/website can come off much more professional, and with the bonus of allowing different auth methods, like email/pass or discord.
 
 One last thing, the reason I made the webapps was because of telegrams change of focus towards questionable or interesting bots, channels and businesses using their platform. With AI being the centerfold of almost every tech company, it's possible that your channel, bots and other contents on telegram get taken down. The webapps are great at allowing customers to message off of telegram.
 
@@ -78,7 +79,34 @@ Go to cloudflare, and navigate to your domains DNS settings. We now want to poin
 
 ![image](https://github.com/user-attachments/assets/d0465d41-dff3-4b4f-815b-7cd0b3cd97ef)
 
-### 6. That's it!
+### 6. Update your telegram bot
+
+On telegram, contact `@BotFather` and make sure to add your domain/subdomain to your bot. Use the command `mybots` to get a list of any bots attached to your current account. Click on the bot you're wanting to use for authentication, then click on `Bot Settings`, `Domain` and send your domain. 
+
+**Example;** `subdomain.example.com`
+
+### 7. Adding discord as an authentication method
+
+Version 1 of this tutorial stated that the only auth method allowed was Telegram, this has now changed. Email and password authentication is now supported, and discord authentication is now supported. 
+
+To enable discord authentication, you first need to go to the [Discord Developers Dashboard](https://discord.com/developers/applications). Click on your discord bot you'd like to use for authentication and then navigate to the `OAuth2` page.
+
+On the OAuth2 page you will need to add a redirect to your domain. That should look like the following; `https://subdomain.example.com/node/auth/callback` or `https://domain.com/node/auth/callback`. Then make sure to save your changes.
+
+![image](https://github.com/user-attachments/assets/81e92596-4e6a-4be4-a696-bb16f819af15)
+
+![image](https://github.com/user-attachments/assets/a3102030-0c1a-4765-b1a7-0f7780c4d723)
+
+On that same OAuth2 page you will notice a section that says `Client Secret`, you will need to reset the secret and then add that to your [bot on the One Chat Dashboard]([One Chat - Bots](https://app.one-chat.co/bots).
+
+![image](https://github.com/user-attachments/assets/e5375f86-ca72-44db-b234-6dcd5cf3ce9b)
+
+Then make sure you edit the node, and add the discord, telegram and/or enable the email authentication. 
+
+![image](https://github.com/user-attachments/assets/995d4c4c-df59-4005-a0ce-80fd19b67044)
+
+
+### 8. That's it!
 
 It's important to note that sometimes it can take some time for your domain to actually work with webapps. If it takes more then like 30 minutes, just shoot me a message and ill refresh it on my side.
 
