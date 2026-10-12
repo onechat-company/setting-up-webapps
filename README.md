@@ -65,7 +65,7 @@ Cloudflare will give you two nameservers that will point your domain to their se
 
 ### 4. Updating your node
 
-Go to the One Chat dashboard, and navigate to the [One Chat - Nodes](https://app.one-chat.co/nodes) page. Edit your businesses node, and add the domain (e.g. business.com or webapp.business.com).
+Go to the One Chat dashboard, and navigate to the [One Chat - Nodes](https://dashboard.onech.at/nodes) page. Edit your businesses node, and add the domain (e.g. business.com or webapp.business.com).
 
 ### 5. Connecting the domain to the webapps
 
